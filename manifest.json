@@ -1,0 +1,13 @@
+{
+  "manifest_version": 3,
+  "name": "Deephaven Jira",
+  "version": "1.0",
+  "description": "Deephaven Jira Chrome Extension",
+  "permissions": ["activeTab"],
+  "content_scripts": [
+    {
+      "matches": ["https://deephaven.atlassian.net/*"],
+      "js": ["content.js"]
+    }
+  ]
+}
