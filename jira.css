@@ -1,0 +1,11 @@
+/* Fixed in build */
+[data-testid="issue.views.field.single-line-text-inline-edit.customfield_10037"]
+  [data-testid="issue-field-inline-edit-read-view-container.ui.container"]:has(span),
+/* Certified in build */
+[data-testid="issue.views.field.single-line-text-inline-edit.customfield_10038"]
+  [data-testid="issue-field-inline-edit-read-view-container.ui.container"]:has(span),
+/* Documentation Required */  
+[data-testid="issue.issue-view-layout.issue-view-single-select-field.customfield_10032"]
+ [data-testid="issue-field-single-select-inline-edit-full.ui.single-select.field-inline-edit-state-less--container"] {
+  background-color: yellow;
+}

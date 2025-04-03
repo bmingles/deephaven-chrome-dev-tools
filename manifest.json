@@ -7,7 +7,7 @@
   "content_scripts": [
     {
       "matches": ["https://deephaven.atlassian.net/*"],
-      "js": ["content.js"]
+      "css": ["jira.css"]
     }
   ]
 }
