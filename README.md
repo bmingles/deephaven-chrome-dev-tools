@@ -6,6 +6,7 @@ Deephaven Internal devlopment Chrome extension.
 
 - Highlight required fields in Jira tasks
 - Open Deephaven Docs Preview - right-click context menu item to open doc preview links from Github PRs
+  ![Open Deephaven Docs Preview](docs/open-deephaven-docs-preview.gif)
 
 ## Installation
 
