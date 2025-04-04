@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Deephaven Dev - Docs",
-  "version": "1.0",
+  "version": "1.1",
   "description": "Deephaven developer tools for docs.",
   "permissions": [
     "activeTab",
