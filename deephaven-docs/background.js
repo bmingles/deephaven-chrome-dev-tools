@@ -25,6 +25,16 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
           const linkText = results[0].result;
           console.log("Link text:", linkText);
 
+          if (!linkText.endsWith(".md")) {
+            chrome.notifications.create("", {
+              type: "basic",
+              iconUrl: "icons/dh-light-48.png",
+              title: "Unsupported file type",
+              message: "Only Markdown files are supported for preview",
+            });
+            return;
+          }
+
           const [product, ...rest] = linkText.split("/");
           const path = rest.join("/").replace(/\.md$/, "");
 

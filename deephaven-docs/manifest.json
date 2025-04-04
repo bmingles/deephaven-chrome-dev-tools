@@ -3,7 +3,13 @@
   "name": "Deephaven Dev - Docs",
   "version": "1.0",
   "description": "Deephaven developer tools for docs.",
-  "permissions": ["activeTab", "contextMenus", "scripting", "tabs"],
+  "permissions": [
+    "activeTab",
+    "contextMenus",
+    "notifications",
+    "scripting",
+    "tabs"
+  ],
   "icons": {
     "16": "icons/dh-light-16.png",
     "48": "icons/dh-light-48.png",
