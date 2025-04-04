@@ -1,0 +1,13 @@
+{
+  "manifest_version": 3,
+  "name": "Deephaven Dev - Jira",
+  "version": "1.0",
+  "description": "Deephaven developer tools for Jira.",
+  "permissions": [],
+  "content_scripts": [
+    {
+      "matches": ["https://deephaven.atlassian.net/*"],
+      "css": ["jira.css"]
+    }
+  ]
+}
