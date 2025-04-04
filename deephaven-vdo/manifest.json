@@ -1,0 +1,20 @@
+{
+  "name": "Deephaven Dev - VDO Ninja",
+  "description": "Show Page Data",
+  "version": "1.0",
+  "manifest_version": 3,
+  "host_permissions": ["https://vdo.ninja/*"],
+  "permissions": ["activeTab", "scripting", "tabs"],
+  "action": {
+    "default_title": "Show VDO Ninja overlays"
+  },
+  "icons": {
+    "16": "icons/dh-16.png",
+    "32": "icons/dh-32.png",
+    "48": "icons/dh-48.png",
+    "128": "icons/dh-128.png"
+  },
+  "background": {
+    "service_worker": "lib/background.js"
+  }
+}

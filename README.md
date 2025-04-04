@@ -12,6 +12,8 @@ Extensions are separated into subfolders in this repo:
 
 - [/deephaven-jira](deephaven-jira) - Highlight required fields in Jira tasks
 
+- [/deephaven-vdo](deephaven-vdo) - Show username overlays for VDO Ninja calls
+
 ## Installation
 
 - Clone this repo
