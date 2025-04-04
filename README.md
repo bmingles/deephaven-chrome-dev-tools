@@ -13,8 +13,11 @@ Extensions are separated into subfolders in this repo:
 ## Installation
 
 - Clone this repo
+
+> Note that there are multiple extensions in this repo. You can install any of them you are interested in.
+
 - In Chrome, navigate to `chrome://extensions`
 - Enable `Developer Mode` toggle in top right
 - Click `Load upacked` button
-- Select folder containing extension you want to install (/deephaven-docs, /deephaven-jira, etc.)
+- Select folder containing extension you want to install ([/deephaven-docs](deephaven-docs), [/deephaven-jira](deephaven-jira), etc.)
   ![Load unpacked extension](docs/load-unpacked.png)
