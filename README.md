@@ -1,4 +1,4 @@
-# Deephaven Chrome
+# Deephaven Dev Tools Chrome Extension
 
 Deephaven Internal devlopment Chrome extensions.
 
