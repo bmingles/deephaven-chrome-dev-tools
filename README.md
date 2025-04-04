@@ -7,7 +7,9 @@ Deephaven Internal devlopment Chrome extensions.
 Extensions are separated into subfolders in this repo:
 
 - [/deephaven-docs](deephaven-docs) - Open Deephaven Docs Preview - right-click context menu item to open doc preview links from Github PRs
+
   ![Open Deephaven Docs Preview](docs/open-deephaven-docs-preview.gif)
+
 - [/deephaven-jira](deephaven-jira) - Highlight required fields in Jira tasks
 
 ## Installation
@@ -20,4 +22,5 @@ Extensions are separated into subfolders in this repo:
 - Enable `Developer Mode` toggle in top right
 - Click `Load upacked` button
 - Select folder containing extension you want to install ([/deephaven-docs](deephaven-docs), [/deephaven-jira](deephaven-jira), etc.)
+
   ![Load unpacked extension](docs/load-unpacked.png)
