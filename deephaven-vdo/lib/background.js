@@ -17,6 +17,8 @@ function isSupportedUrl(tab) {
 
 async function setDefaultBadgeText(tab) {
   if (isSupportedUrl(tab)) {
+    chrome.action.setIcon({ path: "../icons/dh-32.png" });
+
     const prevState = await chrome.action.getBadgeText({ tabId: tab.id });
 
     if (prevState === "") {
@@ -26,6 +28,7 @@ async function setDefaultBadgeText(tab) {
       });
     }
   } else {
+    chrome.action.setIcon({ path: "../icons/dh-32-gray.png" });
     chrome.action.setBadgeText({
       tabId: tab.id,
       text: "",
