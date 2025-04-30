@@ -4,8 +4,33 @@
 /* Certified in build */
 [data-testid="issue.views.field.single-line-text-inline-edit.customfield_10038"]
   [data-testid="issue-field-inline-edit-read-view-container.ui.container"]:has(span),
-/* Documentation Required */  
+/* Documentation Required */
 [data-testid="issue.issue-view-layout.issue-view-single-select-field.customfield_10032"]
- [data-testid="issue-field-single-select-inline-edit-full.ui.single-select.field-inline-edit-state-less--container"] {
+  [data-testid="issue-field-inline-edit-read-view-container.ui.container"] {
   background-color: yellow;
 }
+
+[data-testid="issue.views.field.single-line-text-inline-edit.customfield_10037"],
+[data-testid="issue.views.field.single-line-text-inline-edit.customfield_10038"] {
+  h3:hover:after {
+    display: block;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    content: "20211129 - bard \A 20221001 - jackson \A 20231218 - vermilion plus (vplus) \A 20240517 - grizzly \A 20250219 - grizzly plus (gplus) \A 20240723 - sanluis (former) \A 20250801 - sanluis";
+    padding: 10px;
+    position: absolute;
+    text-align: left;
+    bottom: 20px;
+    left: 0;
+    z-index: 100;
+    white-space: pre;
+  }
+}
+
+/* 20211129 - bard
+20221001 - jackson
+20231218 - vermilion plus (vplus)
+20240517 - grizzly
+20250219 - grizzly plus (gplus)
+20250801 - sanluis (formerly 20240723) */
