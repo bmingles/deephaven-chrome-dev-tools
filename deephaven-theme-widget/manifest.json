@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+  "name": "Deephaven Dev - Theme Widget",
+  "version": "1.0",
+  "permissions": [],
+  "icons": {
+    "16": "icons/dh-16.png",
+    "32": "icons/dh-32.png",
+    "48": "icons/dh-48.png",
+    "128": "icons/dh-128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://localhost:4000/*", "http://localhost:10000/*"],
+      "js": ["content.js"],
+      "css": ["content.css"]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["icons/dh-16.png"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}
