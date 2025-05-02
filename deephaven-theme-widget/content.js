@@ -32,21 +32,43 @@ const panelEl = createEl(
         createEl('img', { src: dhIcon16Url, alt: 'Deephaven Icon' }),
         createEl('span', { class: 'label' }, 'Deephaven Dev Tools')
       ),
-      textAreaEl,
       createEl(
         'div',
-        { class: 'buttons' },
+        { class: 'content' },
         createEl(
-          'button',
-          { type: 'submit', onClick: onRandomClick },
-          'Random'
+          'a',
+          { href: '?theme=parent-theme&preloadTransparentTheme=true' },
+          'Enable Theming'
         ),
-        createEl('button', { type: 'submit' }, 'Set Theme')
+        textAreaEl,
+        createEl(
+          'div',
+          { class: 'buttons' },
+          createEl(
+            'button',
+            { type: 'submit', onClick: onRandomClick },
+            'Random'
+          ),
+          createEl('button', { type: 'submit' }, 'Set Theme')
+        )
       )
     )
   )
 );
-document.body.appendChild(panelEl);
+
+// Load styles in shadow DOM
+const link = createEl('link', {
+  rel: 'stylesheet',
+  href: chrome.runtime.getURL('content.css'),
+});
+
+// Use shadow DOM to encapsulate styles
+const shadowContainerEl = createEl('div');
+const shadow = shadowContainerEl.attachShadow({ mode: 'closed' });
+shadow.appendChild(link);
+shadow.appendChild(panelEl);
+
+document.body.appendChild(shadowContainerEl);
 
 /** Explicitly set theme vars */
 function setTheme(cssVars) {

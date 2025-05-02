@@ -12,13 +12,12 @@
   "content_scripts": [
     {
       "matches": ["http://localhost:4000/*", "http://localhost:10000/*"],
-      "js": ["content.js"],
-      "css": ["content.css"]
+      "js": ["content.js"]
     }
   ],
   "web_accessible_resources": [
     {
-      "resources": ["icons/dh-16.png"],
+      "resources": ["icons/dh-16.png", "content.css"],
       "matches": ["<all_urls>"]
     }
   ]
