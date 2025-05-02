@@ -11,5 +11,19 @@
   },
   "chrome_url_overrides": {
     "newtab": "newtab.html"
-  }
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://localhost:4000/*", "http://localhost:10000/*"],
+      "js": ["content.js"],
+      "css": ["content.css"],
+      "type": "module"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["icons/dh-16.png"],
+      "matches": ["<all_urls>"]
+    }
+  ]
 }

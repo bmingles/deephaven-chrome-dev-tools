@@ -1,0 +1,57 @@
+.dh-dev-panel {
+  position: absolute;
+  background-color: #fff;
+  border-top-right-radius: 8px;
+  color: #333;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+}
+#form-set-theme {
+  display: flex;
+  flex-direction: column;
+  summary {
+    background-repeat: no-repeat;
+    background-position-y: center;
+    list-style: none;
+    display: flex;
+    gap: 10px;
+    justify-content: start;
+    align-items: center;
+    font-weight: bold;
+    padding: 10px;
+    .label {
+      display: none;
+      flex-grow: 1;
+    }
+  }
+  summary::after {
+    content: '';
+    width: 0;
+    height: 0;
+    border-top: 8px solid #15171b;
+    border-inline: 6px solid transparent;
+    transition: 0.2s;
+    transform: rotate(-180deg);
+  }
+  details[open] {
+    width: 300px;
+    .label {
+      display: block;
+    }
+    > summary::after {
+      transform: rotate(0);
+    }
+  }
+  textarea {
+    width: calc(100% - 20px);
+    height: 200px;
+    margin: 0 10px;
+  }
+  .buttons {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 10px;
+    padding: 10px 0;
+  }
+}
