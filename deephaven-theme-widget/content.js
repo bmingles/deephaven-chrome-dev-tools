@@ -37,7 +37,7 @@ const panelEl = createEl(
         { class: 'content' },
         createEl(
           'a',
-          { href: '?theme=parent-theme&preloadTransparentTheme=true' },
+          { href: '?theme=external-theme&preloadTransparentTheme=true' },
           'Enable Theming'
         ),
         textAreaEl,
@@ -76,7 +76,7 @@ function setTheme(cssVars) {
     {
       message: MSG_REQUEST_SET_THEME,
       payload: {
-        name: 'Iframe Parent Theme',
+        name: 'Iframe External Theme',
         cssVars,
       },
     },
