@@ -4,52 +4,53 @@ const MSG_REQUEST_SET_THEME = 'io.deephaven.message.ThemeModel.requestSetTheme';
 
 const dhIcon16Url = chrome.runtime.getURL('icons/dh-16.png');
 
+const a = createEl.bind(null, 'a');
+const button = createEl.bind(null, 'button');
+const details = createEl.bind(null, 'details');
+const div = createEl.bind(null, 'div');
+const form = createEl.bind(null, 'form');
+const img = createEl.bind(null, 'img');
+const link = createEl.bind(null, 'link');
+const span = createEl.bind(null, 'span');
+const summary = createEl.bind(null, 'summary');
+const textarea = createEl.bind(null, 'textarea');
+
 const initialCssVars = {
   '--dh-color-bg': 'salmon',
   '--dh-color-fg': 'lemonchiffon',
+  '--dh-color-random-area-plot-animation-bg': 'salmon',
+  '--dh-color-random-area-plot-animation-fg-stroke': 'lemonchiffon',
 };
 
-const textAreaEl = createEl(
-  'textarea',
+const textAreaEl = textarea(
   {
     name: 'themeVars',
   },
   JSON.stringify(initialCssVars, null, 2)
 );
 
-const panelEl = createEl(
-  'div',
+const panelEl = div(
   { class: 'dh-dev-panel' },
-  createEl(
-    'form',
+  form(
     { id: 'form-set-theme', onSubmit: onFormSubmit },
-    createEl(
-      'details',
+    details(
       {},
-      createEl(
-        'summary',
+      summary(
         {},
-        createEl('img', { src: dhIcon16Url, alt: 'Deephaven Icon' }),
-        createEl('span', { class: 'label' }, 'Deephaven Dev Tools')
+        img({ src: dhIcon16Url, alt: 'Deephaven Icon' }),
+        span({ class: 'label' }, 'Deephaven Dev Tools')
       ),
-      createEl(
-        'div',
+      div(
         { class: 'content' },
-        createEl(
-          'a',
+        a(
           { href: '?theme=external-theme&preloadTransparentTheme=true' },
           'Enable Theming'
         ),
         textAreaEl,
-        createEl(
-          'div',
+        div(
           { class: 'buttons' },
-          createEl(
-            'button',
-            { type: 'submit', onClick: onRandomClick },
-            'Random'
-          ),
-          createEl('button', { type: 'submit' }, 'Set Theme')
+          button({ type: 'submit', onClick: onRandomClick }, 'Random'),
+          button({ type: 'submit' }, 'Set Theme')
         )
       )
     )
@@ -57,7 +58,7 @@ const panelEl = createEl(
 );
 
 // Load styles in shadow DOM
-const link = createEl('link', {
+const shadowLink = link({
   rel: 'stylesheet',
   href: chrome.runtime.getURL('content.css'),
 });
@@ -65,7 +66,7 @@ const link = createEl('link', {
 // Use shadow DOM to encapsulate styles
 const shadowContainerEl = createEl('div');
 const shadow = shadowContainerEl.attachShadow({ mode: 'closed' });
-shadow.appendChild(link);
+shadow.appendChild(shadowLink);
 shadow.appendChild(panelEl);
 
 document.body.appendChild(shadowContainerEl);
@@ -107,10 +108,13 @@ function getRandomHexColor() {
 
 function getRandomThemeVars() {
   const bgColor = getRandomHexColor();
+  const fgColor = getContrastColor(bgColor);
 
   return {
     '--dh-color-bg': bgColor,
-    '--dh-color-fg': getContrastColor(bgColor),
+    '--dh-color-fg': fgColor,
+    '--dh-color-random-area-plot-animation-bg': bgColor,
+    '--dh-color-random-area-plot-animation-fg-stroke': fgColor,
   };
 }
 
