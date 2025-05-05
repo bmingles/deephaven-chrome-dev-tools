@@ -10,23 +10,25 @@ const details = createEl.bind(null, 'details');
 const div = createEl.bind(null, 'div');
 const form = createEl.bind(null, 'form');
 const img = createEl.bind(null, 'img');
+const input = createEl.bind(null, 'input');
 const link = createEl.bind(null, 'link');
 const span = createEl.bind(null, 'span');
 const summary = createEl.bind(null, 'summary');
 const textarea = createEl.bind(null, 'textarea');
 
+const initialBg = '#FA8072'; // salmon
+const initialFg = '#FFFACD'; // lemonchiffon
+
 const initialCssVars = {
-  '--dh-color-bg': 'salmon',
-  '--dh-color-fg': 'lemonchiffon',
-  '--dh-color-random-area-plot-animation-bg': 'salmon',
-  '--dh-color-random-area-plot-animation-fg-stroke': 'lemonchiffon',
+  '--dh-color-bg': initialBg,
+  '--dh-color-fg': initialFg,
+  '--dh-color-random-area-plot-animation-bg': initialBg,
+  '--dh-color-random-area-plot-animation-fg-stroke': initialFg,
 };
 
-const textAreaEl = textarea(
-  {
-    name: 'themeVars',
-  },
-  JSON.stringify(initialCssVars, null, 2)
+const themeVarsEl = div(
+  { class: 'theme-vars' },
+  ...createThemeVarsFields(initialCssVars)
 );
 
 const panelEl = div(
@@ -46,7 +48,7 @@ const panelEl = div(
           { href: '?theme=external-theme&preloadTransparentTheme=true' },
           'Enable Theming'
         ),
-        textAreaEl,
+        themeVarsEl,
         div(
           { class: 'buttons' },
           button({ type: 'submit', onClick: onRandomClick }, 'Random'),
@@ -71,6 +73,18 @@ shadow.appendChild(panelEl);
 
 document.body.appendChild(shadowContainerEl);
 
+/** Create theme var label + input pairs */
+function createThemeVarsFields(cssVars) {
+  return Object.keys(cssVars).map((key) => [
+    input({
+      type: 'color',
+      value: cssVars[key],
+      name: key,
+    }),
+    span({}, key),
+  ]);
+}
+
 /** Explicitly set theme vars */
 function setTheme(cssVars) {
   window.postMessage(
@@ -86,16 +100,21 @@ function setTheme(cssVars) {
 }
 
 function onRandomClick() {
-  const randomThemeVars = getRandomThemeVarsStr();
-  textAreaEl.value = randomThemeVars;
+  const cssVars = getRandomThemeVars();
+  const children = createThemeVarsFields(cssVars).flat();
+  themeVarsEl.replaceChildren(...children);
 }
 
 function onFormSubmit(event) {
   event.preventDefault();
 
   const formData = new FormData(event.target);
-  const themeVars = formData.get('themeVars');
-  const cssVars = JSON.parse(themeVars);
+  const cssVars = formData.keys().reduce((acc, key) => {
+    acc[key] = formData.get(key);
+    return acc;
+  }, {});
+
+  console.log('Setting theme vars:', cssVars);
 
   setTheme(cssVars);
 }
