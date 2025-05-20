@@ -44,16 +44,21 @@ const panelEl = div(
       ),
       div(
         { class: 'content' },
-        a(
-          { href: '?theme=external-theme&preloadTransparentTheme=true' },
-          'Enable Theming'
-        ),
-        themeVarsEl,
-        div(
-          { class: 'buttons' },
-          button({ type: 'submit', onClick: onRandomClick }, 'Random'),
-          button({ type: 'submit' }, 'Set Theme')
+        location.search.includes(
+          'theme=external-theme&preloadTransparentTheme=true'
         )
+          ? [
+              themeVarsEl,
+              div(
+                { class: 'buttons' },
+                button({ type: 'submit', onClick: onRandomClick }, 'Random'),
+                button({ type: 'submit' }, 'Set Theme')
+              ),
+            ]
+          : a(
+              { href: '?theme=external-theme&preloadTransparentTheme=true' },
+              'Enable Theming'
+            )
       )
     )
   )
