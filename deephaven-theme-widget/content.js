@@ -22,6 +22,7 @@ const initialFg = '#FFFACD'; // lemonchiffon
 const initialCssVars = {
   '--dh-color-bg': initialBg,
   '--dh-color-fg': initialFg,
+  '--dh-color-grid-header-bg': initialBg,
   '--dh-color-random-area-plot-animation-bg': initialBg,
   '--dh-color-random-area-plot-animation-fg-stroke': initialFg,
 };
@@ -97,6 +98,7 @@ function setTheme(cssVars) {
       message: MSG_REQUEST_SET_THEME,
       payload: {
         name: 'Iframe External Theme',
+        baseThemeKey: getBaseThemeKey(cssVars['--dh-color-bg']),
         cssVars,
       },
     },
@@ -137,6 +139,7 @@ function getRandomThemeVars() {
   return {
     '--dh-color-bg': bgColor,
     '--dh-color-fg': fgColor,
+    '--dh-color-grid-header-bg': bgColor,
     '--dh-color-random-area-plot-animation-bg': bgColor,
     '--dh-color-random-area-plot-animation-fg-stroke': fgColor,
   };
@@ -144,6 +147,20 @@ function getRandomThemeVars() {
 
 function getRandomThemeVarsStr() {
   return JSON.stringify(getRandomThemeVars(), null, 2);
+}
+
+/** Get light or dark base theme key based on given background hex color */
+function getBaseThemeKey(bgHex) {
+  // Remove '#' if present
+  bgHex = bgHex.replace('#', '');
+  // Parse r, g, b values
+  const r = parseInt(bgHex.substr(0, 2), 16);
+  const g = parseInt(bgHex.substr(2, 2), 16);
+  const b = parseInt(bgHex.substr(4, 2), 16);
+  // Calculate brightness (YIQ formula)
+  const yiq = (r * 299 + g * 587 + b * 114) / 1000;
+  // Return black for light backgrounds, white for dark backgrounds
+  return yiq >= 128 ? 'default-light' : 'default-dark';
 }
 
 function getContrastColor(hexColor) {
