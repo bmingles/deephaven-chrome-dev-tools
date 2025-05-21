@@ -1,6 +1,9 @@
 # Deephaven Dev Tools Chrome Extension
 
-Deephaven Internal devlopment Chrome extensions.
+<div style="display:flex;align-items:center">
+  <img src="dh-logo-128.svg" width="64"/>
+  Deephaven Internal development Chrome extensions.
+</div>
 
 ## Extensions
 
