@@ -56,10 +56,7 @@ const panelEl = div(
                 button({ type: 'submit' }, 'Set Theme')
               ),
             ]
-          : a(
-              { href: '?theme=external-theme&preloadTransparentTheme=true' },
-              'Enable Theming'
-            )
+          : a({ href: getThemedUrl(window.location).href }, 'Enable Theming')
       )
     )
   )
@@ -78,6 +75,14 @@ shadow.appendChild(shadowLink);
 shadow.appendChild(panelEl);
 
 document.body.appendChild(shadowContainerEl);
+
+/** Append query params to make this a theme url */
+function getThemedUrl(url) {
+  const themedUrl = new URL(url);
+  themedUrl.searchParams.set('theme', 'external-theme');
+  themedUrl.searchParams.set('preloadTransparentTheme', 'true');
+  return themedUrl;
+}
 
 /** Create theme var label + input pairs */
 function createThemeVarsFields(cssVars) {
